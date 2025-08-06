@@ -1,12 +1,14 @@
-# Data Architecture plan
-
-### The project:
+# About the project
 
 - A site that allows users to search for & book one-way flights.
 - Users can search for available flights by selecting departure/arrival airports, date, and number of passengers.
 - After selecting a flight, users can enter booking & passenger details.
 - Each booking is linked to a specific flight and can include multiple passengers.
 - Flights take place at a specific date & (departure) time, and between two airport locations.
+
+<hr>
+
+# Data architecture plan
 
 (Table: **airports**)
 - id: integer
