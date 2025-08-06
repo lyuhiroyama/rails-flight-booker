@@ -6,8 +6,6 @@
 - Each booking is linked to a specific flight and can include multiple passengers.
 - Flights take place at a specific date & (departure) time, and between two airport locations.
 
-<hr>
-
 # Data architecture plan
 
 (Table: **airports**)
