@@ -19,10 +19,11 @@
      <div>
         <%= label_tag :departure_time, "Flight Date:" %>
         <%= select_tag :departure_time, options_for_select(
-            Flight.select(:departure_time)
-            .distinct
-            .order(:departure_time)
-            .map { |f| [f.departure_time.strftime("%B %d %Y"), f.departure_time.to_date] }
+            Flight.pluck(:departure_time)
+                .map(&:to_date)
+                .uniq
+                .sort
+                .map { |date| [date.strftime("%B %d %Y"), date] }
         ) %>
     </div>
 
