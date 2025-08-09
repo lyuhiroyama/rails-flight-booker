@@ -1,0 +1,30 @@
+<h1>Search Flights:</h1>
+
+<%= form_with url: flights_path, method: :get, local: true do %>
+    <div>
+        <%= label_tag :origin_id, "From:" %>
+        <%= select_tag :origin_id, options_from_collection_for_select(Airport.all, :id, :airport_code) %>
+    </div>
+
+    <div>
+        <%= label_tag :destination_id, "To:" %>
+        <%= select_tag :destination_id, options_from_collection_for_select(Airport.all, :id, :airport_code) %>
+    </div>
+
+     <div> 
+        <%= label_tag :num_passengers, "Number of passengers:" %>
+        <%= select_tag :num_passengers, options_for_select((1..4).map { |n| [n, n] }) %>
+    </div>
+
+     <div>
+        <%= label_tag :departure_time, "Flight Date:" %>
+        <%= select_tag :departure_time, options_for_select(
+            Flight.select(:departure_time)
+            .distinct
+            .order(:departure_time)
+            .map { |f| [f.departure_time.strftime("%B %d %Y"), f.departure_time.to_date] }
+        ) %>
+    </div>
+
+    <%= submit_tag "Search Flights" %>
+<% end %>
