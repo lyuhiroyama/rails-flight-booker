@@ -4,6 +4,7 @@
 <p>Date: <%= @flight.departure_time.strftime("%B %d %Y") %></p>
 
 <%= form_with model: @booking do |booking_f| %>
+    <%= booking_f.hidden_field :flight_id, value: @flight.id %>
     
     <%= booking_f.fields_for :passengers do |passenger_f| %>
         <div>
