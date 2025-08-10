@@ -1,0 +1,20 @@
+<h1>Booking Confirmation Page:</h1>
+<p>Flight ID: <%= @flight.id %></p>
+<p>Flight: <%= @flight.departure_airport.airport_code %> -> <%= @flight.arrival_airport.airport_code %></p>
+<p>Date: <%= @flight.departure_time.strftime("%B %d %Y") %></p>
+
+<%= form_with model: @booking do |booking_f| %>
+    
+    <%= booking_f.fields_for :passengers do |passenger_f| %>
+        <div>
+            <h3>Passenger Information:</h3>
+            <%= passenger_f.label :name %>
+            <%= passenger_f.text_field :name %>
+
+            <%= passenger_f.label :email %>
+            <%= passenger_f.text_field :email %>
+        </div>
+    <% end %>
+
+    <%= booking_f.submit "Confirm Booking" %>
+<% end %>
