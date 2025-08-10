@@ -1,0 +1,23 @@
+<h1>Booking confirmed!</h1>
+
+<div>
+    <h2>Flight Information:</h2>
+    <p><strong>Flight ID: </strong><%= @booking.flight.id %></p>
+    <p><strong>From: </strong><%= @booking.flight.origin_id %></p>
+    <p><strong>To: </strong><%= @booking.flight.destination_id %></p>
+    <p><strong>Departure Date: </strong><%= @booking.flight.departure_time %></p>
+    <p><strong>Flight duration: </strong><%= @booking.flight.duration_minutes %></p>
+</div>
+
+<div>
+    <h2>Passenger Information:</h2>
+    <% @booking.passengers.each_with_index do |passenger, index| %>
+        <div>
+            <h3>Passenger <%= index + 1 %><h3>
+            <p><strong>Name: </strong><%= passenger.name %></p>
+            <p><strong>Email: </strong><%= passenger.email %></p>
+        </div>
+    <% end %>
+</div>
+
+<%= link_to "Book Another Flight", root_path %>
